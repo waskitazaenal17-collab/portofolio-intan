@@ -1,5 +1,6 @@
 /* CSS untuk Portofolio Aesthetic Intan */
 :root {
+    /* Light Mode */
     --bg-color: #fdfbf7;
     --text-color: #4a4a4a;
     --card-bg: #ffffff;
@@ -7,6 +8,29 @@
     --hover-color: #faedcd;
     --nav-bg: rgba(253, 251, 247, 0.95);
     --border-color: #e9edc9;
+    --secondary-color: #ff6b6b;
+    --tertiary-color: #4ecdc4;
+    
+    /* Dark Mode */
+    --dark-bg-color: #0f1419;
+    --dark-text-color: #e8eef5;
+    --dark-card-bg: #1a2332;
+    --dark-accent-color: #00d4ff;
+    --dark-hover-color: #2a3a52;
+    --dark-nav-bg: rgba(15, 20, 25, 0.95);
+    --dark-border-color: #2a3a52;
+    --dark-secondary-color: #ff6b6b;
+    --dark-tertiary-color: #00d4ff;
+}
+
+body.dark-mode {
+    --bg-color: var(--dark-bg-color);
+    --text-color: var(--dark-text-color);
+    --card-bg: var(--dark-card-bg);
+    --accent-color: var(--dark-accent-color);
+    --hover-color: var(--dark-hover-color);
+    --nav-bg: var(--dark-nav-bg);
+    --border-color: var(--dark-border-color);
 }
 
 * {
@@ -22,6 +46,16 @@ body {
     color: var(--text-color);
     line-height: 1.6;
     scroll-behavior: smooth;
+    background-image: 
+        linear-gradient(135deg, rgba(212, 163, 115, 0.1) 0%, transparent 50%),
+        linear-gradient(-135deg, rgba(78, 205, 196, 0.1) 0%, transparent 50%);
+    background-attachment: fixed;
+}
+
+body.dark-mode {
+    background-image: 
+        linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
+        linear-gradient(-135deg, rgba(255, 107, 107, 0.08) 0%, transparent 50%);
 }
 
 header {
@@ -50,10 +84,42 @@ header {
     letter-spacing: 1px;
 }
 
+.nav-center {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
 .nav-links {
     list-style: none;
     display: flex;
     gap: 2rem;
+}
+
+/* Dark Mode Toggle Button */
+.theme-toggle {
+    background: var(--accent-color);
+    border: none;
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(212, 163, 115, 0.3);
+}
+
+body.dark-mode .theme-toggle {
+    background: var(--dark-accent-color);
+    box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
 }
 
 .nav-links a {
@@ -209,4 +275,156 @@ footer {
     color: #888;
     font-size: 0.9rem;
     border-top: 1px solid var(--border-color);
+}
+
+body.dark-mode footer {
+    background: var(--dark-card-bg);
+    color: #aaa;
+    border-top: 1px solid var(--dark-border-color);
+}
+
+/* Project Showcase */
+.project-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(212, 163, 115, 0.2);
+    border-color: var(--accent-color);
+}
+
+.project-header {
+    background: linear-gradient(135deg, var(--accent-color), #ff6b6b);
+    padding: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-height: 80px;
+}
+
+.project-header i {
+    font-size: 2rem;
+}
+
+.project-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.project-body {
+    padding: 20px;
+}
+
+.project-body p {
+    color: var(--text-color);
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.tag {
+    background: var(--hover-color);
+    color: var(--accent-color);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+body.dark-mode .tag {
+    background: var(--dark-hover-color);
+    color: var(--dark-accent-color);
+}
+
+/* CV Preview */
+.cv-section {
+    margin-top: 50px;
+}
+
+.cv-container {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.cv-container h3 {
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.cv-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.cv-column h4 {
+    color: var(--text-color);
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+}
+
+.cv-item {
+    margin-bottom: 15px;
+}
+
+.cv-item strong {
+    color: var(--accent-color);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.cv-item em {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.cv-item p {
+    margin: 5px 0;
+    color: var(--text-color);
+    font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cv-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .nav-center {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
 }
